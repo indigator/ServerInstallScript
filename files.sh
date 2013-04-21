@@ -1,5 +1,5 @@
 #!/bin/bash
-#Script à éxécuter en Root
+#Script a éxécuter en Root
 
 function replace 
 {
@@ -7,7 +7,7 @@ function replace
     mv $1 $2
 }
 
-#On met le système à jour
+#On met le système a jour
 install=`echo /install`
 cd $install
  
@@ -17,4 +17,15 @@ file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
 replace $install$file $path
 /etc/init.d/ssh restart
+
+#Config Nginx => Dossier nginx
+file="/nginx/nginx.conf"
+path="/etc/nginx/nginx.conf"
+replace $install$file $path
+file="/nginx/default"
+path="/etc/nginx/sites-available/default"
+replace $install$file $path
+/etc/init.d/nginx restart
+/etc/init.d/php5-fpm reload
+
 
