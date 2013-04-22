@@ -59,8 +59,10 @@ mkdir ssh
 file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
 cp $path $backup$file
-sed '/AllowUsers.*/c\AllowUsers' ssh/sshd_config
-#sed '/AllowUsers/d' /ssh/sshd_config
+
+#sed '/AllowUsers.*/c\AllowUsers' ssh/sshd_config
+sed '/AllowUsers/d' /ssh/sshd_config
+sed '/PermitRootLogin/ a AllowUsers' /ssh/sshd_config
 #PermitRootLogin
 
 service ssh restart 
