@@ -63,12 +63,7 @@ mkdir ssh
 file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
 cp $path $backup$file
-
-sed -i 's/AllowUsers.*/AllowUsers/' $backup$file
-#sed '/AllowUsers/d' $backup$file
-#sed '/PermitRootLogin/ a AllowUsers' $backup$file
-#PermitRootLogin
-service ssh restart 
+sed -i 's/AllowUsers.*/AllowUsers/' $backup$file # On purge le fichier de sauvegarde des utilisateurs enregistrés sur ce système
 echo "=============== Configurations SSH sauvegardées ==============="
 
 #On sauvegarde les dépots
@@ -143,7 +138,7 @@ file="/backup.zip"
 target="/script/Files"
 rm $target$file
 zip -r $target$file $backup
-echo "=============== Fin de compression ZIP"
+echo "=============== Fin de compression ZIP ==============="
 echo
 echo "############################ Fin du script de sauvegarde ########################"
 echo
