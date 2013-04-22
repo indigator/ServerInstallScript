@@ -47,6 +47,13 @@ path="/root/.bashrc"
 cp $path $backup$file 
 echo "Configurations Shell sauvegardées"
 
+#On sauvegarde les Confs LShell => Limited Shell
+mkdir lshell
+file="/lshell/lshell.conf"
+path="/etc/lshell.conf"
+cp $path $backup$file 
+echo "Configurations Lshell sauvegardées"
+
 #On sauvegarde les conf SSH
 mkdir ssh
 file="/ssh/sshd_config"

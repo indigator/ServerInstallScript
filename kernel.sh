@@ -10,7 +10,7 @@ function replace
 #On met le système a jour
 apt-get update
 apt-get upgrade
-apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi
+apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi lshell sudo
 
 echo "Tous les packets ont ete installes"
 sleep 2
@@ -65,6 +65,13 @@ file="/shell/.bashrc"
 path="/root/.bashrc"
 replace $install$file $path
 echo "Configurations Shell en place"
+sleep 2
+
+# Lshell => dossier lshell
+file="/lshell/lshell.conf"
+path="/etc/lshell.conf"
+replace $install$file $path
+echo "Configurations LShell en place"
 sleep 2
 
 #Les depots
