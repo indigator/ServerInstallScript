@@ -3,7 +3,7 @@
 
 ########### À éxéuter avant de pouvoir lancer le script ###############
 #
-#   apt-get install wget ca-certificates
+#   apt-get install wget ca-certificates unzip
 #   cd /
 #   wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/install.sh
 #   chmod +x ./install.sh

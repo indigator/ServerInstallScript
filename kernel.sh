@@ -11,7 +11,6 @@ function replace
 apt-get update
 apt-get upgrade
 
-
 #Fichiers a telecharger & installer
 cd /
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/Files/backup.zip
