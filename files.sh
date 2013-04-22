@@ -8,7 +8,7 @@ function replace
 }
 
 #On met le système a jour
-install=`echo /install`
+install="/backup"
 cd $install
  
 #Config SSH => Dossier ssh
@@ -27,5 +27,8 @@ path="/etc/nginx/sites-available/default"
 replace $install$file $path
 /etc/init.d/nginx restart
 /etc/init.d/php5-fpm reload
+
+#Finish
+ls -al -R
 
 
