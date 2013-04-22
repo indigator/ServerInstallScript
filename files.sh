@@ -11,12 +11,13 @@ install="/backup"
 cd $install
 
 #On configure les locales
-file="/host/hostname"
-path="/etc/hostname"
+file="/locale/locale"
+path="/etc/default/locale"
 replace $install$file $path
-file="/host/hosts"
-path="/etc/hosts"
+file="/locale/locale.gen"
+path="/etc/locale.gen"
 replace $install$file $path
+dpkg-reconfigure locales
 echo "Locales mises a jour"
 sleep 2
 
@@ -53,7 +54,7 @@ path="/etc/ssh/sshd_config"
 replace $install$file $path
     #On ajoute tous les utilisateurs du système
     /script/user.sh
-#/etc/init.d/ssh restart
+
 echo "Configurations SSH a jour"
 sleep 2
 

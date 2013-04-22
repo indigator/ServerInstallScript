@@ -3,6 +3,9 @@
 
 ########### À éxéuter avant de pouvoir lancer le script ###############
 #
+#   #!/bin/bash
+#   #Script a executer en Root
+#
 #   apt-get install wget ca-certificates unzip
 #   cd /
 #   wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/install.sh
@@ -37,11 +40,13 @@ wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/kernel.s
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/backup.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
+wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/user.sh
 
 chmod +x backup.sh
 chmod +x files.sh
 chmod +x kernel.sh
 chmod +x files.sh
+chmod +x user.sh
 
 echo "Lancement de l'installation"
 sleep 2
