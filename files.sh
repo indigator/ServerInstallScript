@@ -132,6 +132,12 @@ chmod -R owncloud:owncloud /home/owncloud/
 echo "=============== Configurations OWNCLOUD a jour ==============="
 sleep 2
 
+#Confiuration ProFTPd => Dossier proftpd
+file="/proftpd/proftpd.conf"
+path="/etc/proftpd/proftpd.conf"
+replace $install$file $path
+echo "=============== Configurations Vim a jour ==============="
+
 #Finish
 echo
 echo "####################################  Fin du script d'install ####################################"

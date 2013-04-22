@@ -132,6 +132,18 @@ path="/usr/share/vim/vimcurrent/colors/molokai.vim"
 cp $path $backup$file
 echo "=============== Configurations Vim Sauvegardées ==============="
 
+
+#On sauvegarde VIM
+mkdir proftpd
+file="/proftpd/proftpd.conf"
+path="/etc/proftpd/proftpd.conf"
+cp $path $backup$file
+echo "=============== Configurations Vim Sauvegardées ==============="
+/etc/proftpd/proftpd.conf
+
+
+
+
 #Fin du Script
 mkdir zip
 file="/backup.zip"
