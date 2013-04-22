@@ -64,7 +64,7 @@ sleep 2
 echo "Fin de la mise a jour"
 sleep 1
 ls -al -R
-sleep 3
-reboot
+sleep 5
+
 
 
