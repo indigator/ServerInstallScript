@@ -71,7 +71,7 @@ mkdir sources
 file="/sources/sources.list"
 path="/etc/apt/sources.list"
 cp $path $backup$file 
-echo "=============== Depots Aptitudes sauvegardées ==============="
+echo "=============== Depots Aptitudes sauvegardés ==============="
 
 #On sauvegarde les confs Nginx
 mkdir nginx
