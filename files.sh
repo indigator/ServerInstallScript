@@ -3,7 +3,12 @@
 
 function replace 
 {
-    rm $2
+    
+    if [ -f $2 ] #Si le fichier $2 existe
+    then
+        rm $2
+    fi
+    
     mv $1 $2
 }
 
@@ -18,7 +23,7 @@ file="/locale/locale.gen"
 path="/etc/locale.gen"
 replace $install$file $path
 dpkg-reconfigure locales
-echo "Locales mises a jour"
+echo "=============== Locales mises a jour ==============="
 sleep 2
 
 #Config Hostname => Dossier host
@@ -30,21 +35,21 @@ path="/etc/hosts"
 replace $install$file $path
 #On relance les hosts
 /etc/init.d/hostname.sh
-echo "Hostnames a jours"
+echo "=============== Hostnames a jours ==============="
 sleep 2
 
 #shell => dossier shell
 file="/shell/.bashrc"
 path="/root/.bashrc"
 replace $install$file $path
-echo "Configurations Shell en place"
+echo "=============== Configurations Shell en place ==============="
 sleep 2
 
 # Lshell => dossier lshell
 file="/lshell/lshell.conf"
 path="/etc/lshell.conf"
 replace $install$file $path
-echo "Configurations LShell en place"
+echo "=============== Configurations LShell en place ==============="
 sleep 2
 
  
@@ -55,7 +60,7 @@ replace $install$file $path
     #On ajoute tous les utilisateurs du système
     /script/user.sh
 
-echo "Configurations SSH a jour"
+echo "=============== Configurations SSH a jour ==============="
 sleep 2
 
 #Config PHP-FPM => Dossier fpm
@@ -66,7 +71,7 @@ file="/fpm/php-fpm.conf"
 path="/etc/php5/fpm/php-fpm.conf"
 replace $install$file $path
 /etc/init.d/php5-fpm reload
-echo "Configurations PHP-FPM a jour"
+echo "=============== Configurations PHP-FPM a jour ==============="
 sleep 2
 
 #Config Nginx => Dossier nginx
@@ -80,7 +85,7 @@ file="/nginx/proxy.conf"
 path="/etc/nginx/proxy.conf"
 replace $install$file $path
 /etc/init.d/nginx restart
-echo "Configurations Nginx a jour"
+echo "=============== Configurations Nginx a jour ==============="
 sleep 2
 
 #Config Apache => Dossier apache
@@ -91,16 +96,28 @@ file="/apache/ports.conf"
 path="/etc/apache2/ports.conf"
 replace $install$file $path
 file="/apache/fastcgi.conf"
-path="/etc/apache2/mods-enabled/fastcgi.conf"
+path="/etc/apache2/mods-available/fastcgi.conf"
 replace $install$file $path
-a2enmod actions fastcgi alias
+a2enmod actions alias fastcgi
 /etc/init.d/apache2 restart
-echo "Configurations Apache a jour"
+echo "=============== Configurations Apache a jour ==============="
+sleep 2
+
+#Config Vim => Dossier vim
+file="/vim/vimrc.local"
+path="/etc/vim/vimrc.local"
+replace $install$file $path
+file="/vim/molokai.vim"
+path="/usr/share/vim/vimcurrent/colors/molokai.vim"
+replace $install$file $path
+echo "=============== Configurations VIM a jour ==============="
 sleep 2
 
 #Finish
-echo "Fin de la mise a jour"
-sleep 1
+echo
+echo "####################################  Fin du script d'install ####################################"
+echo
+sleep 2
 ls -al -R
 sleep 5
 

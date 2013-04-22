@@ -1,6 +1,10 @@
 #!/bin/bash
 #Script a éxécuter en Root
 
+echo
+echo "############################ Debut du script de sauvegarde ########################"
+echo
+
 backup="/backup"
 
 if [ -d $backup ]
@@ -18,7 +22,7 @@ mkdir grub
 file="/grub/grub"
 path="/etc/default/grub"
 cp $path $backup$file
-echo "Configurations Grub sauvegardées"
+echo "=============== Configurations Grub sauvegardées ==============="
 
 #On sauvegarde les fichiers Hosts
 mkdir host
@@ -28,7 +32,7 @@ cp $path $backup$file
 file="/host/hosts"
 path="/etc/hosts"
 cp $path $backup$file
-echo "Configurations Hosts sauvegardées"
+echo "=============== Configurations Hosts sauvegardées ==============="
 
 #On sauvegarde les conf Locales
 mkdir locale
@@ -38,21 +42,21 @@ cp $path $backup$file
 file="/locale/locale.gen"
 path="/etc/locale.gen"
 cp $path $backup$file 
-echo "Configurations Locales sauvegardées"
+echo "=============== Configurations Locales sauvegardées ==============="
 
 #On Sauvegarde les conf Shell
 mkdir shell
 file="/shell/.bashrc"
 path="/root/.bashrc"
 cp $path $backup$file 
-echo "Configurations Shell sauvegardées"
+echo "=============== Configurations Shell sauvegardées ==============="
 
 #On sauvegarde les Confs LShell => Limited Shell
 mkdir lshell
 file="/lshell/lshell.conf"
 path="/etc/lshell.conf"
 cp $path $backup$file 
-echo "Configurations Lshell sauvegardées"
+echo "=============== Configurations Lshell sauvegardées ==============="
 
 #On sauvegarde les conf SSH
 mkdir ssh
@@ -64,16 +68,15 @@ sed -i 's/AllowUsers.*/AllowUsers/' $backup$file
 #sed '/AllowUsers/d' $backup$file
 #sed '/PermitRootLogin/ a AllowUsers' $backup$file
 #PermitRootLogin
-
 service ssh restart 
-echo "Configurations SSH sauvegardées"
+echo "=============== Configurations SSH sauvegardées ==============="
 
 #On sauvegarde les dépots
 mkdir sources
 file="/sources/sources.list"
 path="/etc/apt/sources.list"
 cp $path $backup$file 
-echo "Sources sauvegardées"
+echo "=============== Sources sauvegardées ==============="
 
 #On sauvegarde les confs Nginx
 mkdir nginx
@@ -86,7 +89,7 @@ cp $path $backup$file
 file="/nginx/proxy.conf"
 path="/etc/nginx/proxy.conf"
 cp $path $backup$file
- echo "Configurations NGINX sauvegardées"
+ echo "=============== Configurations NGINX sauvegardées ==============="
 
 #On sauvegarde les confs PHP-FPM
 mkdir fpm
@@ -96,7 +99,7 @@ cp $path $backup$file
 file="/fpm/php-fpm.conf"
 path="/etc/php5/fpm/php-fpm.conf"
 cp $path $backup$file
-echo "Configurations PHP-FPM sauvegardées"
+echo "=============== Configurations PHP-FPM sauvegardées ==============="
 
 #On sauvegarde les confs Apache2
 mkdir apache
@@ -109,7 +112,7 @@ cp $path $backup$file
 file="/apache/fastcgi.conf"
 path="/etc/apache2/mods-enabled/fastcgi.conf"
 cp $path $backup$file
-echo "Configurations Apache2 sauvegardées"
+echo "=============== Configurations Apache2 sauvegardées ==============="
 
 #On sauvegarde les Vhost
 mkdir vhosts
@@ -122,7 +125,17 @@ mkdir vhosts
     file="/vhosts/nginx.zip"
     target="/etc/nginx/sites-enabled/"
     zip -r $backup$file $target
-echo "Configurations Vhosts Sauvegardées"
+echo "=============== Configurations Vhosts Sauvegardées ==============="
+
+#On sauvegarde VIM
+mkdir vim
+file="/vim/vimrc.local"
+path="/etc/vim/vimrc.local"
+cp $path $backup$file
+file="/vim/molokai.vim"
+path="/usr/share/vim/vimcurrent/colors/molokai.vim"
+cp $path $backup$file
+echo "=============== Configurations Vim Sauvegardées ==============="
 
 #Fin du Script
 mkdir zip
@@ -130,5 +143,7 @@ file="/backup.zip"
 target="/script/Files"
 rm $target$file
 zip -r $target$file $backup
-echo "Fin de compression ZIP"
-echo "******* Fin du script de sauvegarde ********"
+echo "=============== Fin de compression ZIP"
+echo
+echo "############################ Fin du script de sauvegarde ########################"
+echo

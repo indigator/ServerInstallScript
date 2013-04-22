@@ -13,6 +13,9 @@
 #   ./install.sh
 #
 ########### À éxéuter avant de pouvoir lancer le script ###############
+echo
+echo "####################################  Debut du script d'install ####################################"
+echo
 
 echo "Changeons le Mot de Passe Administrateur :"
 
@@ -46,12 +49,12 @@ chmod +x files.sh
 chmod +x kernel.sh
 chmod +x user.sh
 
-echo "Lancement de l'installation"
+echo "=============== Lancement de l'installation ==============="
 sleep 2
 ./kernel.sh
 ./files.sh
 
 # On reboot le server
-echo "On reboot"
+echo "=============== ///////////\\\\\\\\\\\\\\\\ On reboot ///////////\\\\\\\\\\\\\\\\ ============="
 sleep 1
 reboot

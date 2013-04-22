@@ -17,13 +17,13 @@ wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/Files/ba
 unzip backup.zip
 install="/backup"
 cd $install
-echo "Fichier backup recupere"
+echo "=============== Fichier backup recupere ==============="
 sleep 2
 
 #On met a jour le noyaux:
 apt-get install linux-image-3.2.0-4-amd64
 grub-mkconfig > /boot/grub/grub.cfg
-echo "Kernel Linux mis a jour"
+echo "=============== Kernel Linux mis a jour ==============="
 sleep 2
 
 #Config Grub pour booter sur le bon noyau => Dossier grub
@@ -31,7 +31,7 @@ file="/grub/grub"
 path="/etc/default/grub"
 replace $install$file $path
 update-grub
-echo "Grub mis a jour"
+echo "=============== Grub mis a jour ==============="
 sleep 2
 
 #Les depots
@@ -54,13 +54,13 @@ replace $install$file $path
 
 apt-get update
 apt-get upgrade
-echo "Depots a jour et complet"
+echo "=============== Depots a jour et complet ==============="
 sleep 2
 
 #On installe tous les paquets necessaire
-apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi lshell sudo
+apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi lshell sudo vim-nox
 
 echo
-echo "Tous les packets ont ete installes"
+echo "=============== Tous les packets ont ete installes ==============="
 echo
 sleep 2
