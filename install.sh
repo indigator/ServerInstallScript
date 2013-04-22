@@ -46,7 +46,7 @@ chmod +x files.sh
 echo "Lancement de l'installation"
 sleep 2
 ./kernel.sh
-./fil
+./files.sh
 
 # On reboot le server
 echo "On reboot"
