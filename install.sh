@@ -20,9 +20,9 @@ fi
 
 mkdir /script
 cd /script
-wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/master/backup.sh
-wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/master/files.sh
-wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/master/kernel.sh
+wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/raw/master/backup.sh
+wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
+wget https://raw.github.com/JonathanDekhtiar/ServerInstallScript/raw/master/kernel.sh
 
 chmod +x backup.sh
 chmod +x files.sh
