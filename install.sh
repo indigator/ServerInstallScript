@@ -2,11 +2,14 @@
 #Script a executer en Root
 
 ########### À éxéuter avant de pouvoir lancer le script ###############
+#
 #   apt-get install wget ca-certificates
+#   cd /
+#   wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/install.sh
+#
 ########### À éxéuter avant de pouvoir lancer le script ###############
 
-cd /
-wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/install.sh
+
 
 if [ -d /script ]
 then
