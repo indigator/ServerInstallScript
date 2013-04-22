@@ -58,7 +58,9 @@ echo "Configurations Lshell sauvegardées"
 mkdir ssh
 file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
-cp $path $backup$file 
+cp $path $backup$file
+sed "s/AllowUsers*/AllowUsers/g" /ssh/sshd_config
+service ssh restart 
 echo "Configurations SSH sauvegardées"
 
 #On sauvegarde les dépots

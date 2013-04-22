@@ -11,12 +11,12 @@ install="/backup"
 cd $install
  
 #Config SSH => Dossier ssh
-echo "On ajoute l'utilisateur admin"
-adduser admin
 file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
 replace $install$file $path
-/etc/init.d/ssh restart
+    #On ajoute tous les utilisateurs du système
+    ./user.sh
+#/etc/init.d/ssh restart
 echo "Configurations SSH a jour"
 sleep 2
 
