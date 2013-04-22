@@ -39,13 +39,11 @@ cd /script
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/kernel.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/backup.sh
-wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/user.sh
 
 chmod +x backup.sh
 chmod +x files.sh
 chmod +x kernel.sh
-chmod +x files.sh
 chmod +x user.sh
 
 echo "Lancement de l'installation"
