@@ -10,8 +10,9 @@ do
 	fi
 	
 	adduser --shell /usr/bin/lshell $user
+	
 	read -p "Voulez-vous lui autoriser un accès SSH (y/N) :" result 
-    if [ $result -eq "N" || $result -eq "n" ||]
+    if [ $result -eq "y" || $result -eq "Y"]
 	then
         sed -i '/^AllowUsers/ s/$/ '$user'/' /etc/ssh/sshd_config
         echo "L'utilisateur "$user" peut maintenant se connecter en SSH avec un shell Limité"
