@@ -140,5 +140,14 @@ rm $target$file
 zip -r $target$file $backup
 echo "=============== Fin de compression ZIP ==============="
 echo
+echo 
+echo "=============== ENVOIE SUR GITHUB ==============="
+git commit -am "Backup Script"
+git push
+echo "=============== Fin envoie SUR GITHUB ==============="
+echo
+echo
 echo "############################ Fin du script de sauvegarde ########################"
 echo
+
+echo 
