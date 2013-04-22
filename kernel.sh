@@ -34,42 +34,6 @@ update-grub
 echo "Grub mis a jour"
 sleep 2
 
-#On configure les locales
-file="/host/hostname"
-path="/etc/hostname"
-replace $install$file $path
-file="/host/hosts"
-path="/etc/hosts"
-replace $install$file $path
-echo "Locales mises a jour"
-sleep 2
-
-#Config Hostname => Dossier host
-file="/host/hostname"
-path="/etc/hostname"
-replace $install$file $path
-file="/host/hosts"
-path="/etc/hosts"
-replace $install$file $path
-#On relance les hosts
-/etc/init.d/hostname.sh
-echo "Hostnames a jours"
-sleep 2
-
-#shell => dossier shell
-file="/shell/.bashrc"
-path="/root/.bashrc"
-replace $install$file $path
-echo "Configurations Shell en place"
-sleep 2
-
-# Lshell => dossier lshell
-file="/lshell/lshell.conf"
-path="/etc/lshell.conf"
-replace $install$file $path
-echo "Configurations LShell en place"
-sleep 2
-
 #Les depots
 file="/sources/sources.list"
 path="/etc/apt/sources.list"
@@ -98,5 +62,3 @@ apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-ess
 
 echo "Tous les packets ont ete installes"
 sleep 2
-
-
