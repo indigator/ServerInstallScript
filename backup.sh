@@ -69,12 +69,46 @@ cp $path $backup$file
 file="/nginx/default"
 path="/etc/nginx/sites-available/default"
 cp $path $backup$file
-echo "Configurations NGINX sauvegardées"
+file="/nginx/proxy.conf"
+path="/etc/nginx/proxy.conf"
+cp $path $backup$file
+ echo "Configurations NGINX sauvegardées"
+
+#On sauvegarde les confs PHP-FPM
+mkdir fpm
+file="/fpm/www.conf"
+path="/etc/php5/fpm/pool.d/www.conf"
+cp $path $backup$file
+file="/fpm/php-fpm.conf"
+path="/etc/php5/fpm/php-fpm.conf"
+cp $path $backup$file
+echo "Configurations PHP-FPM sauvegardées"
 
 #On sauvegarde les confs Apache2
 mkdir apache
-#cp $path $backup$file 
+file="/apache/apache2.conf"
+path="/etc/apache2/apache2.conf"
+cp $path $backup$file
+file="/apache/ports.conf"
+path="/etc/apache2/ports.conf"
+cp $path $backup$file
+file="/apache/fastcgi.conf"
+path="/etc/apache2/mods-enabled/fastcgi.conf"
+cp $path $backup$file
 echo "Configurations Apache2 sauvegardées"
+
+#On sauvegarde les Vhost
+mkdir vhosts
+    #Apache
+    file="/vhosts/apache.zip"
+    target="/etc/apache2/sites-enabled/"
+    zip -r $backup$file $target
+    
+    #Nginx
+    file="/vhosts/nginx.zip"
+    target="/etc/nginx/sites-enabled/"
+    zip -r $backup$file $target
+echo "Configurations Vhosts Sauvegardées"
 
 #Fin du Script
 mkdir zip

@@ -1,7 +1,7 @@
 #!/bin/bash
-#Script a éxécuter en Root
+#Script a executer en Root
 
-apt-get install wget
+apt-get install wget ca-certificates
 
 if [ -d /script ]
 then
