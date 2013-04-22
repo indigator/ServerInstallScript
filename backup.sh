@@ -112,7 +112,9 @@ echo "Configurations Vhosts Sauvegardées"
 
 #Fin du Script
 mkdir zip
-file="/zip/backup.zip"
-zip -r $backup$file $backup
+file="/backup.zip"
+target="/script/Files"
+rm $target$file
+zip -r $target$file $backup
 echo "Fin de compression ZIP"
 echo "******* Fin du script de sauvegarde ********"
