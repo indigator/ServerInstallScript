@@ -1,35 +1,29 @@
 #!/bin/bash 
+
 echo
 echo "################### Ajoutons de Nouveaux Utilisateurs #####################"
 echo
-echo "Nous allons ajouter l'utilisateur admin (non root)" 
+
+addgroup sftpusers #On crée le groupe des utilisateurs du sFTP
+
+echo "Nous allons ajouter l'utilisateur admin (non root) : " 
+
 adduser --shell /usr/bin/lshell admin
+mkdir /home/admin/www
+chown -R root:root /home/admin/
+chmod 755 /home/admin/
+chown admin:admin /home/admin/www
+usermod -G admin,sftpusers -a admin
+
 echo
 sed -i '/^AllowUsers/ s/$/ admin/' /etc/ssh/sshd_config
 echo "L'utilisateur admin peut maintenant se connecter en SSH avec un shell Limité"
 echo
 echo
 
-while :
-do
-    read -p "Nous allons ajouter un utilisateur, son nom ( - 1 to quit ) : " user 
-    
-    if [ $user -eq -1 ]
-	then
-		break
-	fi
-	
-	adduser --shell /usr/bin/lshell $user
-	
-	read -n1 -p "Voulez-vous lui autoriser un accès SSH (y/N) :" result 
-    if [[ $result == "Y" || $result == "y" ]]; then
-        echo
-        sed -i '/^AllowUsers/ s/$/ '$user'/' /etc/ssh/sshd_config
-        echo "L'utilisateur "$user" peut maintenant se connecter en SSH avec un shell Limité"
-	fi
-	sleep 1
-	echo 
-done
+#On appelle le script de création d'utilisateurs
+/script/adduser.sh
+
 
 service ssh restart
 echo

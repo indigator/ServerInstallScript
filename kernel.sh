@@ -58,7 +58,7 @@ echo "=============== Depots a jour et complet ==============="
 sleep 2
 
 #On installe tous les paquets necessaire
-apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi lshell sudo vim-nox
+apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers build-essential nginx apache2 php5 mysql-server mysql-client php5-fpm php-codesniffer php-doc php5-curl php5-imap php5-mysql php5-mcrypt php5-pgsql php5-sqlite php5-xcache libapache2-mod-fastcgi lshell sudo vim-nox proftpd
 
 echo
 echo "=============== Tous les packets ont ete installes ==============="

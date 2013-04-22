@@ -43,11 +43,13 @@ wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/kernel.s
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/backup.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/user.sh
+wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/adduser.sh
 
 chmod +x backup.sh
 chmod +x files.sh
 chmod +x kernel.sh
 chmod +x user.sh
+chmod +x adduser.sh
 
 echo "=============== Lancement de l'installation ==============="
 sleep 2
