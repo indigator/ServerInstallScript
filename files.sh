@@ -136,6 +136,10 @@ sleep 2
 file="/proftpd/proftpd.conf"
 path="/etc/proftpd/proftpd.conf"
 replace $install$file $path
+file="/proftpd/modules.conf"
+path="/etc/proftpd/modules.conf"
+replace $install$file $path
+/etc/init.d/proftpd restart
 echo "=============== Configurations Vim a jour ==============="
 
 #Finish
