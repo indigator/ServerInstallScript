@@ -113,6 +113,25 @@ replace $install$file $path
 echo "=============== Configurations VIM a jour ==============="
 sleep 2
 
+#Configuration de GIT
+git config --global user.name "JonathanDekhtiar - Diablo.Server"
+git config --global user.email contact@jonathandekhtiar.eu
+ssh-keygen -t rsa -C "marco.flint31@gmail.com"
+echo "=============== Configurations de GIT a jour ==============="
+sleep 2
+
+#Configuration de OwnCloud
+echo "On ajoute l'utilisateur OwnCloud :"
+adduser owncloud
+wget http://download.owncloud.org/community/owncloud-5.0.0.tar.bz2
+tar -xjf owncloud-5.0.0.tar.bz2
+rm owncloud-5.0.0.tar.bz2
+mv owncloud www
+mv www /home/owncloud/
+chmod -R owncloud:owncloud /home/owncloud/
+echo "=============== Configurations OWNCLOUD a jour ==============="
+sleep 2
+
 #Finish
 echo
 echo "####################################  Fin du script d'install ####################################"
