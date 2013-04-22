@@ -10,7 +10,7 @@ do
 	fi
 	
 	adduser --shell /usr/bin/lshell $user
-	sed -i '/^AllowUsers/ s/$/ $user/' /etc/ssh/sshd_config
+	sed -i '/^AllowUsers/ s/$/ '$user'/' /etc/ssh/sshd_config
 	echo "L'utilisateur peut maintenant se connecter en SSH avec un shell Limité"
 	#echo "N'oublis pas de modifier les AllowUsers du fichiers : /etc/ssh/sshd_config"
 	sleep 2
