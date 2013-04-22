@@ -5,8 +5,8 @@ echo
 echo "Nous allons ajouter l'utilisateur admin (non root)" 
 adduser --shell /usr/bin/lshell admin
 echo
-sed -i '/^AllowUsers/ s/$/ '$user'/' /etc/ssh/sshd_config
-echo "L'utilisateur "$user" peut maintenant se connecter en SSH avec un shell Limité"
+sed -i '/^AllowUsers/ s/$/ admin/' /etc/ssh/sshd_config
+echo "L'utilisateur admin peut maintenant se connecter en SSH avec un shell Limité"
 echo
 echo
 
