@@ -9,7 +9,9 @@
 #
 ########### À éxéuter avant de pouvoir lancer le script ###############
 
+echo "Changeons le Mot de Passe Administrateur :"
 
+passwd
 
 if [ -d /script ]
 then
