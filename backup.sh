@@ -59,7 +59,8 @@ mkdir ssh
 file="/ssh/sshd_config"
 path="/etc/ssh/sshd_config"
 cp $path $backup$file
-sed 's/^AllowUsers.*/AllowUsers/' /ssh/sshd_config
+sed -E 's/^AllowUsers.*/AllowUsers/'  /ssh/sshd_config
+#sed 's/^AllowUsers.*/AllowUsers/' /ssh/sshd_config
 service ssh restart 
 echo "Configurations SSH sauvegardées"
 
