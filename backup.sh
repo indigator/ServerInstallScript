@@ -141,7 +141,7 @@ cp $path $backup$file
 file="/proftpd/modules.conf"
 path="/etc/proftpd/modules.conf"
 cp $path $backup$file
-echo "=============== Configurations Vim Sauvegardées ==============="
+echo "=============== Configurations Proftpd Sauvegardées ==============="
 
 #Fin du Script
 mkdir zip
