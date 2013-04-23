@@ -116,9 +116,17 @@ sleep 2
 #Configuration de GIT
 git config --global user.name "JonathanDekhtiar - Diablo.Server"
 git config --global user.email contact@jonathandekhtiar.eu
+cd ~/.ssh
 ssh-keygen -t rsa -C "marco.flint31@gmail.com"
-echo "=============== Configurations de GIT a jour ==============="
-sleep 2
+
+echo "############ SSH-Public KEY // COPY TO CLIPBOARD ###########"
+echo
+cat  ~/.ssh/id_rsa.pub
+echo
+echo "############ SSH-Public KEY // COPY TO CLIPBOARD ###########"
+
+cd $install
+sleep 6
 
 #Configuration de OwnCloud
 echo "On ajoute l'utilisateur OwnCloud :"
