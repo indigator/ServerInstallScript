@@ -156,6 +156,7 @@ echo "=============== ENVOIE SUR GITHUB ==============="
 cd /script
 message="Backup Script : `date +%d-%m-%Y::%H-%M`"
 git commit -am "$message"
+git pull
 git push
 echo "=============== Fin envoie SUR GITHUB ==============="
 echo
