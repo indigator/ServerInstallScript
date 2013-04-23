@@ -6,6 +6,10 @@
 #   #!/bin/bash
 #   #Script a executer en Root
 #
+#   vi /etc/default/locale
+#   ajouter a la fin : LC_ALL="en_GB.utf8"
+#   reboot
+#
 #   apt-get install wget ca-certificates unzip
 #   cd /
 #   wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/install.sh

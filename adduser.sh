@@ -4,7 +4,7 @@ while :
 do
     read -p "Nous allons ajouter un utilisateur, son nom ( - 1 to quit ) : " user 
         
-    if [$user -eq -1 ]
+    if [ $user -eq -1 ]
     then
         break
     fi
