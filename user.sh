@@ -10,10 +10,10 @@ echo "Nous allons ajouter l'utilisateur admin (non root) : "
 
 adduser --shell /usr/bin/lshell admin
 mkdir /home/admin/www
-chown -R root:root /home/admin/
-chmod 755 /home/admin/
-chown admin:admin /home/admin/www
-usermod -G admin,sftpusers -a admin
+#chown -R root:root /home/admin/
+#chmod 755 /home/admin/
+#chown admin:admin /home/admin/www
+#usermod -G admin,sftpusers -a admin
 
 echo
 sed -i '/^AllowUsers/ s/$/ admin/' /etc/ssh/sshd_config
