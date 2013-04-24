@@ -84,27 +84,29 @@ replace $install$file $path
 file="/nginx/proxy.conf"
 path="/etc/nginx/proxy.conf"
 replace $install$file $path
+
+mkdir /etc/nginx/virtual.d
 /etc/init.d/nginx restart
 echo "=============== Configurations Nginx a jour ==============="
 sleep 2
 
 #Config Apache => Dossier apache
-file="/apache/apache2.conf"
-path="/etc/apache2/apache2.conf"
-replace $install$file $path
-file="/apache/ports.conf"
-path="/etc/apache2/ports.conf"
-replace $install$file $path
-file="/apache/fastcgi.conf"
-path="/etc/apache2/mods-available/fastcgi.conf"
-replace $install$file $path
-file="/apache/php.ini"
-path="/etc/php5/apache2/php.ini"
-replace $install$file $path
-a2enmod actions alias fastcgi
-/etc/init.d/apache2 restart
-echo "=============== Configurations Apache a jour ==============="
-sleep 2
+#file="/apache/apache2.conf"
+#path="/etc/apache2/apache2.conf"
+#replace $install$file $path
+#file="/apache/ports.conf"
+#path="/etc/apache2/ports.conf"
+#replace $install$file $path
+#file="/apache/fastcgi.conf"
+#path="/etc/apache2/mods-available/fastcgi.conf"
+#replace $install$file $path
+#file="/apache/php.ini"
+#path="/etc/php5/apache2/php.ini"
+#replace $install$file $path
+#a2enmod actions alias fastcgi
+#/etc/init.d/apache2 restart
+#echo "=============== Configurations Apache a jour ==============="
+#sleep 2
 
 #Config Vim => Dossier vim
 file="/vim/vimrc.local"

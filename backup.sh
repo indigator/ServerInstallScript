@@ -96,32 +96,36 @@ path="/etc/php5/fpm/php-fpm.conf"
 cp $path $backup$file
 echo "=============== Configurations PHP-FPM sauvegardées ==============="
 
+#On sauvegarde les confs PHP
+#mkdir php
+#file="/apache/php.ini"
+#path="/etc/php5/apache2/php.ini"
+#cp $path $backup$file
+#echo "=============== Configurations PHP sauvegardées ==============="
+
 #On sauvegarde les confs Apache2
-mkdir apache
-file="/apache/apache2.conf"
-path="/etc/apache2/apache2.conf"
-cp $path $backup$file
-file="/apache/ports.conf"
-path="/etc/apache2/ports.conf"
-cp $path $backup$file
-file="/apache/fastcgi.conf"
-path="/etc/apache2/mods-enabled/fastcgi.conf"
-cp $path $backup$file
-file="/apache/php.ini"
-path="/etc/php5/apache2/php.ini"
-cp $path $backup$file
-echo "=============== Configurations Apache2 sauvegardées ==============="
+#mkdir apache
+#file="/apache/apache2.conf"
+#path="/etc/apache2/apache2.conf"
+#cp $path $backup$file
+#file="/apache/ports.conf"
+#path="/etc/apache2/ports.conf"
+#cp $path $backup$file
+#file="/apache/fastcgi.conf"
+#path="/etc/apache2/mods-enabled/fastcgi.conf"
+#cp $path $backup$file
+#echo "=============== Configurations Apache2 sauvegardées ==============="
 
 #On sauvegarde les Vhost
 mkdir vhosts
     #Apache
-    file="/vhosts/apache.zip"
-    target="/etc/apache2/sites-enabled/"
-    zip -r $backup$file $target
+    #file="/vhosts/apache.zip"
+    #target="/etc/apache2/sites-enabled/"
+    #zip -r $backup$file $target
     
     #Nginx
     file="/vhosts/nginx.zip"
-    target="/etc/nginx/sites-enabled/"
+    target="/etc/nginx/sites-available/"
     zip -r $backup$file $target
 echo "=============== Configurations Vhosts Sauvegardées ==============="
 
@@ -154,9 +158,9 @@ cp $path $backup$file
 echo "=============== Configurations Mysql Sauvegardées ==============="
 
 
-
-
 #Fin du Script
+echo
+echo
 sleep 3
 mkdir zip
 file="/backup.zip"
