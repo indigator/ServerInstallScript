@@ -154,9 +154,9 @@ cp $path $backup$file
 echo "=============== Configurations Mysql Sauvegardées ==============="
 
 
-
-
 #Fin du Script
+echo
+echo
 sleep 3
 mkdir zip
 file="/backup.zip"
