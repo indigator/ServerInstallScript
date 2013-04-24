@@ -88,45 +88,21 @@ cp $path $backup$file
 
 #On sauvegarde les confs PHP-FPM
 mkdir fpm
-file="/fpm/www.conf"
-path="/etc/php5/fpm/pool.d/www.conf"
-cp $path $backup$file
+file="/fpm/"
+path="/etc/php5/fpm/pool.d/"
+cp -R $path $backup$file
 file="/fpm/php-fpm.conf"
 path="/etc/php5/fpm/php-fpm.conf"
 cp $path $backup$file
 echo "=============== Configurations PHP-FPM sauvegardées ==============="
 
-#On sauvegarde les confs PHP
-#mkdir php
-#file="/apache/php.ini"
-#path="/etc/php5/apache2/php.ini"
-#cp $path $backup$file
-#echo "=============== Configurations PHP sauvegardées ==============="
-
-#On sauvegarde les confs Apache2
-#mkdir apache
-#file="/apache/apache2.conf"
-#path="/etc/apache2/apache2.conf"
-#cp $path $backup$file
-#file="/apache/ports.conf"
-#path="/etc/apache2/ports.conf"
-#cp $path $backup$file
-#file="/apache/fastcgi.conf"
-#path="/etc/apache2/mods-enabled/fastcgi.conf"
-#cp $path $backup$file
-#echo "=============== Configurations Apache2 sauvegardées ==============="
 
 #On sauvegarde les Vhost
 mkdir vhosts
-    #Apache
-    #file="/vhosts/apache.zip"
-    #target="/etc/apache2/sites-enabled/"
-    #zip -r $backup$file $target
-    
-    #Nginx
-    file="/vhosts/nginx.zip"
-    target="/etc/nginx/sites-available/"
-    zip -r $backup$file $target
+file="/vhosts/"
+path="/etc/nginx/sites-available/"
+cp -R $path $backup$file
+
 echo "=============== Configurations Vhosts Sauvegardées ==============="
 
 #On sauvegarde VIM
