@@ -146,7 +146,18 @@ path="/etc/proftpd/modules.conf"
 cp $path $backup$file
 echo "=============== Configurations Proftpd Sauvegardées ==============="
 
+#On sauvegarde Mysql
+mkdir mysql
+file="/mysql/my.cnf"
+path="/etc/mysql/my.cnf"
+cp $path $backup$file
+echo "=============== Configurations Mysql Sauvegardées ==============="
+
+
+
+
 #Fin du Script
+sleep 3
 mkdir zip
 file="/backup.zip"
 target="/script/Files"

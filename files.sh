@@ -151,7 +151,18 @@ file="/proftpd/modules.conf"
 path="/etc/proftpd/modules.conf"
 replace $install$file $path
 /etc/init.d/proftpd restart
-echo "=============== Configurations Vim a jour ==============="
+echo "=============== Configurations ProFTPd a jour ==============="
+
+#On sauvegarde Mysql
+file="/mysql/my.cnf"
+path="/etc/mysql/my.cnf"
+replace $install$file $path
+/etc/init.d/mysql reload
+echo "Nous allons configurer Mysql, entrer le MdP Root, puis répondre 'No' a la première question puis 'Yes' a toutes les autres"
+sleep 4
+mysql_secure_installatione
+echo
+echo "=============== Configurations Mysql a jour ==============="
 
 #Finish
 echo
