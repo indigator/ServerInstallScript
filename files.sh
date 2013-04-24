@@ -98,6 +98,9 @@ replace $install$file $path
 file="/apache/fastcgi.conf"
 path="/etc/apache2/mods-available/fastcgi.conf"
 replace $install$file $path
+file="/apache/php.ini"
+path="/etc/php5/apache2/php.ini"
+replace $install$file $path
 a2enmod actions alias fastcgi
 /etc/init.d/apache2 restart
 echo "=============== Configurations Apache a jour ==============="

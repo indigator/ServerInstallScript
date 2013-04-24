@@ -107,6 +107,9 @@ cp $path $backup$file
 file="/apache/fastcgi.conf"
 path="/etc/apache2/mods-enabled/fastcgi.conf"
 cp $path $backup$file
+file="/apache/php.ini"
+path="/etc/php5/apache2/php.ini"
+cp $path $backup$file
 echo "=============== Configurations Apache2 sauvegardées ==============="
 
 #On sauvegarde les Vhost
