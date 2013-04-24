@@ -17,23 +17,19 @@ then
         exit 0
 elif [ -f $VHOSTAV$1 ] && ( [ ! -f $VHOSTEN$1 ] || [[ $2 == "-f" ]] )
 then
-        if nginx -t &> /dev/null
+        
+        [[ $2 == "-f" ]] && rm $VHOSTEN$1 &> /dev/null #On force l'execution en redirigeant les erreurs dans le vide
+        
+        ln -s $VHOSTAV$1 $VHOSTEN$1
+        if [ -f $VHOSTEN$1 ]
         then
-                [[ $2 == "-f" ]] && rm $VHOSTEN$1 &> /dev/null
-                ln -s $VHOSTAV$1 $VHOSTEN$1
-                if nginx -t &> /dev/null || [[ $2 == "-f" ]]
-                then
-                        echo "Restart Nginx now with \"sudo service nginx restart\" to enable the change!"
-                        exit 0
-                else
-                        rm $VHOSTEN$1
-                        echo "Error in the virtualhost config, disabled again."
-                        exit 1
-                fi
+                echo "Restart Nginx now with \"sudo service nginx restart\" to enable the change!"
+                exit 0
         else
-                echo "Error in the Nginx configuration, not enabling the virtualhost."
-                exit 2
+                echo "Error in the execution."
+                exit 1
         fi
+        
 elif [ -f $VHOSTEN$1 ]
 then
         echo "Virtualhost already enabled."
