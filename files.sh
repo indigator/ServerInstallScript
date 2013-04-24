@@ -66,10 +66,10 @@ sleep 2
 #Config PHP-FPM => Dossier fpm
 file="/fpm/www.conf"
 path="/etc/php5/fpm/pool.d/www.conf"
-replace $install$file $path
+#replace $install$file $path
 file="/fpm/php-fpm.conf"
 path="/etc/php5/fpm/php-fpm.conf"
-replace $install$file $path
+#replace $install$file $path
 /etc/init.d/php5-fpm reload
 echo "=============== Configurations PHP-FPM a jour ==============="
 sleep 2
@@ -77,15 +77,13 @@ sleep 2
 #Config Nginx => Dossier nginx
 file="/nginx/nginx.conf"
 path="/etc/nginx/nginx.conf"
-replace $install$file $path
+#replace $install$file $path
 file="/nginx/default"
 path="/etc/nginx/sites-available/default"
-replace $install$file $path
+#replace $install$file $path
 file="/nginx/proxy.conf"
 path="/etc/nginx/proxy.conf"
-replace $install$file $path
-
-mkdir /etc/nginx/virtual.d
+#replace $install$file $path
 /etc/init.d/nginx restart
 echo "=============== Configurations Nginx a jour ==============="
 sleep 2
@@ -162,7 +160,7 @@ replace $install$file $path
 /etc/init.d/mysql reload
 echo "Nous allons configurer Mysql, entrer le MdP Root, puis répondre 'No' a la première question puis 'Yes' a toutes les autres"
 sleep 4
-mysql_secure_installatione
+mysql_secure_installation
 echo
 echo "=============== Configurations Mysql a jour ==============="
 

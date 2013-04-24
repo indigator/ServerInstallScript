@@ -48,16 +48,19 @@ wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/files.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/backup.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/user.sh
 wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/adduser.sh
+wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/nginxautoinstall.sh
 
 chmod +x backup.sh
 chmod +x files.sh
 chmod +x kernel.sh
 chmod +x user.sh
 chmod +x adduser.sh
+chmod +x nginxautoinstall.sh
 
 echo "=============== Lancement de l'installation ==============="
 sleep 2
 ./kernel.sh
+./nginxautoinstall.sh
 ./files.sh
 
 # On reboot le server
