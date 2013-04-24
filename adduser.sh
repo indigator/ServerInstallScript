@@ -29,5 +29,3 @@ do
     echo 
     
 done
-
-sed -i '/^AllowUsers/ s/$/ comet/' /etc/ssh/sshd_config
