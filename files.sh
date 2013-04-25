@@ -6,7 +6,7 @@ function replace
     
     if [ -f $2 ] #Si le fichier $2 existe
     then
-        rm $2
+        rm -R $2
     fi
     
     mv $1 $2
@@ -64,12 +64,12 @@ echo "=============== Configurations SSH a jour ==============="
 sleep 2
 
 #Config PHP-FPM => Dossier fpm
-file="/fpm/www.conf"
-path="/etc/php5/fpm/pool.d/www.conf"
-#replace $install$file $path
 file="/fpm/php-fpm.conf"
 path="/etc/php5/fpm/php-fpm.conf"
-#replace $install$file $path
+replace $install$file $path
+file="/fpm/pool.d"
+path="/etc/php5/fpm/pool.d"
+replace $install$file $path
 /etc/init.d/php5-fpm reload
 echo "=============== Configurations PHP-FPM a jour ==============="
 sleep 2
@@ -77,34 +77,14 @@ sleep 2
 #Config Nginx => Dossier nginx
 file="/nginx/nginx.conf"
 path="/etc/nginx/nginx.conf"
-#replace $install$file $path
+replace $install$file $path
+mkdir -p /etc/nginx/sites-available/
 file="/nginx/default"
 path="/etc/nginx/sites-available/default"
-#replace $install$file $path
-file="/nginx/proxy.conf"
-path="/etc/nginx/proxy.conf"
-#replace $install$file $path
+replace $install$file $path
 /etc/init.d/nginx restart
 echo "=============== Configurations Nginx a jour ==============="
 sleep 2
-
-#Config Apache => Dossier apache
-#file="/apache/apache2.conf"
-#path="/etc/apache2/apache2.conf"
-#replace $install$file $path
-#file="/apache/ports.conf"
-#path="/etc/apache2/ports.conf"
-#replace $install$file $path
-#file="/apache/fastcgi.conf"
-#path="/etc/apache2/mods-available/fastcgi.conf"
-#replace $install$file $path
-#file="/apache/php.ini"
-#path="/etc/php5/apache2/php.ini"
-#replace $install$file $path
-#a2enmod actions alias fastcgi
-#/etc/init.d/apache2 restart
-#echo "=============== Configurations Apache a jour ==============="
-#sleep 2
 
 #Config Vim => Dossier vim
 file="/vim/vimrc.local"
@@ -133,13 +113,13 @@ sleep 6
 
 #Configuration de OwnCloud
 echo "On ajoute l'utilisateur OwnCloud :"
-adduser owncloud
+adduser --system --group --quiet owncloud
 wget http://download.owncloud.org/community/owncloud-5.0.0.tar.bz2
 tar -xjf owncloud-5.0.0.tar.bz2
 rm owncloud-5.0.0.tar.bz2
 mv owncloud www
 mv www /home/owncloud/
-chmod -R owncloud:owncloud /home/owncloud/
+chown -R owncloud:owncloud /home/owncloud/
 echo "=============== Configurations OWNCLOUD a jour ==============="
 sleep 2
 
@@ -158,7 +138,9 @@ file="/mysql/my.cnf"
 path="/etc/mysql/my.cnf"
 replace $install$file $path
 /etc/init.d/mysql reload
+echo
 echo "Nous allons configurer Mysql, entrer le MdP Root, puis répondre 'No' a la première question puis 'Yes' a toutes les autres"
+echo
 sleep 4
 mysql_secure_installation
 echo

@@ -10,13 +10,16 @@ do
     fi
     
     adduser --shell /usr/bin/lshell $user
-    
-    mkdir /home/$user/www
-    #chown -R root:root /home/$user/
-    #chmod 755 /home/$user/
-    #chown $user:$user /home/$user/www
-    #usermod -G $user,sftpusers -a $user
-    
+  
+    read -n1 -p "Voulez-vous lui creer un VHOST (y/N) :" result 
+    if [[ $result == "Y" || $result == "y" ]]; then
+        echo
+        mkdir /home/$user/www
+        chown -R $user:$user /home/$user/
+        read -p "Quelle est l'adresse ou les adresses (séparés par des espaces) du site http://" server
+        /script/createvhost.sh server /home/$user/www
+        echo "L'utilisateur "$user" peut maintenant créer un siteweb dans son répertoire www/"
+    fi
     
     read -n1 -p "Voulez-vous lui autoriser un accès SSH (y/N) :" result 
     if [[ $result == "Y" || $result == "y" ]]; then

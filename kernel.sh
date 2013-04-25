@@ -3,36 +3,13 @@
 
 function replace 
 {
-    rm $2
+    if [ -f $2 ] #Si le fichier $2 existe
+    then
+        rm -R $2
+    fi
+    
     mv $1 $2
 }
-
-#On met le système a jour
-apt-get update
-apt-get upgrade
-
-#Fichiers a telecharger & installer
-cd /
-wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/Files/backup.zip
-unzip backup.zip
-install="/backup"
-cd $install
-echo "=============== Fichier backup recupere ==============="
-sleep 2
-
-#On met a jour le noyaux:
-apt-get install linux-image-3.2.0-4-amd64
-grub-mkconfig > /boot/grub/grub.cfg
-echo "=============== Kernel Linux mis a jour ==============="
-sleep 2
-
-#Config Grub pour booter sur le bon noyau => Dossier grub
-file="/grub/grub"
-path="/etc/default/grub"
-replace $install$file $path
-update-grub
-echo "=============== Grub mis a jour ==============="
-sleep 2
 
 #Les depots
 file="/sources/sources.list"
@@ -57,8 +34,31 @@ apt-get upgrade
 echo "=============== Depots a jour et complet ==============="
 sleep 2
 
+#Fichiers a telecharger & installer
+cd /
+wget https://github.com/JonathanDekhtiar/ServerInstallScript/raw/master/Files/backup.zip
+unzip backup.zip
+install="/backup"
+cd $install
+echo "=============== Fichier backup recupere ==============="
+sleep 2
+
+#On met a jour le noyaux:
+apt-get install linux-image-3.2.0-4-amd64
+grub-mkconfig > /boot/grub/grub.cfg
+echo "=============== Kernel Linux mis a jour ==============="
+sleep 2
+
+#Config Grub pour booter sur le bon noyau => Dossier grub
+file="/grub/grub"
+path="/etc/default/grub"
+replace $install$file $path
+update-grub
+echo "=============== Grub mis a jour ==============="
+sleep 2
+
 #On installe tous les paquets necessaire
-apt-get install git nano zip unzip make gcc bzip2 linux-kernel-headers nginx php5 mysql-server mysql-client php-codesniffer php-doc php5-imap php5-mcrypt php5-pgsql php5-sqlitef php5-intl  php5-imagick php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-tidy php5-xmlrpc php5-xsl lshell sudo vim-nox proftpd phpmyadmin
+apt-get install git nano zip make gcc bzip2 lshell sudo vim-nox proftpd-basic build-essential linux-libc-dev nginx mysql-server mysql-client php-codesniffer php-doc php5-imap php5-mcrypt php5-pgsql php5-sqlite php5-imagick  php5-tidy  phpmyadmin php5-dev php5-common php5-mysql php5-fpm php-apc php5-gd php5-curl php5-memcache memcached
 
 echo
 echo "=============== Tous les packets ont ete installes ==============="
