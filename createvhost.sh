@@ -5,6 +5,7 @@ path="/etc/nginx/sites-available/"
 from="default"
 server=$1 # $1 : l'adresse du site web
 root=$2 # $2 : Le chemin des fichiers
+export root=`echo $root | sed -e 's/\//\\\\\//g'` #On escape les "/" du chemin par "\/"
 to=$3 # $3 : le nom du fichier vhost
 
 if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]
@@ -17,8 +18,8 @@ then
 elif [ -d $2 ] && [ -f $path$from ]
 then
         cp $path$from $path$to  
-        sed -i '/server_name/ s/$/ '$server'/' $path$to 
-        sed -i '/root/ s/$/ '$root'/' $path$to     
+        sed -i '/server_name/ s/$/ '$server';/' $path$to 
+	sed -i '/root/ s/$/ '$root';/' $path$to
         
 else
         echo "default file is missing or root directory is missing"
