@@ -17,8 +17,8 @@ then
 elif [ -d $2 ] && [ -f $path$from ]
 then
         cp $path$from $path$to  
-        sed -i '/server_name/ s/$/ '$server';/' $path$to 
-        sed -i '/root/ s/$/ '$root';/' $path$to     
+        sed -i '/server_name/ s/$/ '$server'/' $path$to 
+        sed -i '/root/ s/$/ '$root'/' $path$to     
         
 else
         echo "default file is missing or root directory is missing"
