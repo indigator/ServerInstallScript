@@ -1,6 +1,28 @@
 #!/bin/bash
 #Script a éxécuter en Root
 
+while :
+do
+    read -p "Quelle est l'adresse IP de votre serveur (ping affiche son IP) : " ip_server
+    
+    if [[ $ip_server != "" ]]
+    then
+        break
+    fi
+    
+done
+
+while :
+do
+    read -p "Quelle est l'adresse IP du serveur DNS secondaire (ping affiche son IP) : " dns2
+    
+    if [[ $dns2 != "" ]]
+    then
+        break
+    fi
+    
+done
+
 
 while :
 do
@@ -16,18 +38,6 @@ do
         
     done
     
-    while :
-    do
-        read -p "Quelle est l'adresse IP du serveur DNS secondaire (ping affiche son IP) : " dns2
-        
-        if [[ $dns2 != "" ]]
-        then
-            break
-        fi
-        
-    done
-    
-    
     dns='\nzone "'$domain'" {\n
     \t type master;\n
     \t file "/etc/bind/db.'$domain'";\n
@@ -38,7 +48,12 @@ do
     
     echo -e $dns >> /etc/bind/named.conf.local
         
-    cp /etc/bind/db.domain.name /etc/bind/db.$domain
+    cp /etc/bind/db.domain.name cd /sc /etc/bind/db.$domain
+    
+    sed -i 's/domain.name/'$domain'/g' /etc/bind/db.$domain 
+    sed -i 's/dns2/'$dns2'/g' /etc/bind/db.$domain 
+    sed -i 's/ipserver/'$ip_server'/g' /etc/bind/db.$domain
+
     
     read -n1 -p "Voulez-vous déclarer une autre zone DNS (y/N) : " result 
     if [[ $result != "Y" && $result != "y" ]] 
