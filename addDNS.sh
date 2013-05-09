@@ -14,9 +14,20 @@ done
 
 while :
 do
-    read -p "Quelle est l'adresse IP du serveur DNS secondaire (ping affiche son IP) : " dns2
+    read -p "Quelle est l'adresse web de votre serveur (http://...) : " addr_server
     
-    if [[ $dns2 != "" ]]
+    if [[ $addr_server != "" ]]
+    then
+        break
+    fi
+    
+done
+
+while :
+do
+    read -p "Quelle est l'adresse web du serveur DNS secondaire (http://...) : " addr_dns2
+    
+    if [[ $addr_dns2 != "" ]]
     then
         break
     fi
@@ -51,8 +62,9 @@ do
     cp /etc/bind/db.domain.name /etc/bind/db.$domain
     
     sed -i 's/domain.name/'$domain'/g' /etc/bind/db.$domain 
-    sed -i 's/dns2/'$dns2'/g' /etc/bind/db.$domain 
+    sed -i 's/addrdns2/'$addr_dns2'/g' /etc/bind/db.$domain 
     sed -i 's/ipserver/'$ip_server'/g' /etc/bind/db.$domain
+    sed -i 's/addrserver/'$addr_server'/g' /etc/bind/db.$domain
 
     
     read -n1 -p "Voulez-vous déclarer une autre zone DNS (y/N) : " result 

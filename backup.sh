@@ -73,6 +73,19 @@ path="/etc/apt/sources.list"
 cp $path $backup$file 
 echo "=============== Depots Aptitudes sauvegardés ==============="
 
+#On sauvegarde le serveur DNS
+mkdir dns
+file="/dns/db.domain.name"
+path="/etc/bind/db.domain.name"
+cp $path $backup$file
+file="/dns/named.conf.options"
+path="/etc/bind/named.conf.options"
+cp $path $backup$file 
+file="/dns/named.conf.local"
+path="/etc/bind/named.conf.local.original"
+cp $path $backup$file
+echo "=============== Configurations DNS sauvegardées ==============="
+
 #On sauvegarde les confs Nginx
 mkdir nginx
 file="/nginx/nginx.conf"
