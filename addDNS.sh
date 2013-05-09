@@ -48,7 +48,7 @@ do
     
     echo -e $dns >> /etc/bind/named.conf.local
         
-    cp /etc/bind/db.domain.name cd /sc /etc/bind/db.$domain
+    cp /etc/bind/db.domain.name /etc/bind/db.$domain
     
     sed -i 's/domain.name/'$domain'/g' /etc/bind/db.$domain 
     sed -i 's/dns2/'$dns2'/g' /etc/bind/db.$domain 
