@@ -12,7 +12,8 @@ do
     adduser --shell /usr/bin/lshell $user
   
     read -n1 -p "Voulez-vous lui creer un VHOST (y/N) :" result 
-    if [[ $result == "Y" || $result == "y" ]]; then
+    if [[ $result == "Y" || $result == "y" ]]
+    then
         echo
         mkdir /home/$user/www
         chown -R $user:$user /home/$user/
