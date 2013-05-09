@@ -25,6 +25,17 @@ done
 
 while :
 do
+    read -p "Quelle est l'adresse IP de votre serveur DNS secondaire (ping affiche son IP) : " ip_dns2
+    
+    if [[ $ip_dns2 != "" ]]
+    then
+        break
+    fi
+    
+done
+
+while :
+do
     read -p "Quelle est l'adresse web du serveur DNS secondaire (http://...) : " addr_dns2
     
     if [[ $addr_dns2 != "" ]]
@@ -52,7 +63,7 @@ do
     dns='\nzone "'$domain'" {\n
     \t type master;\n
     \t file "/etc/bind/db.'$domain'";\n
-    \t allow-transfer {'$dns2';};\n
+    \t allow-transfer {'$ip_dns2';};\n
     \t allow-query{any;};\n
     \t notify yes;\n
     };'
