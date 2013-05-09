@@ -86,3 +86,6 @@ do
     echo
   
 done
+
+#On redemarre le serveur DNS
+/etc/init.d/bind9 reload
